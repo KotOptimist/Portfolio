@@ -1,3 +1,11 @@
+spring.main.banner-mode: off
+
 spring.mvc.view:
-  prefix: /WEB-INF/views/
+  prefix: /views/
   suffix: .jsp
+
+portfolio.datasource:
+  url: jdbc:postgresql://localhost:5432/portfolio
+  username: postgres
+  password: postgres
+  driver-class-name: org.postgresql.Driver
