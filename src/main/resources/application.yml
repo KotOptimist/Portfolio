@@ -4,8 +4,24 @@ spring.mvc.view:
   prefix: /views/
   suffix: .jsp
 
-portfolio.datasource:
+jdbc.datasource:
   url: jdbc:postgresql://localhost:5432/portfolio
   username: postgres
   password: postgres
   driver-class-name: org.postgresql.Driver
+  
+security:
+  page:
+    admin: /admin/**
+    login: /login
+    access-deny: /access_deny
+  default-success:
+    page: /admin/
+    always-use: false
+  user:
+    admin:
+      login: admin
+      password: 123
+    user:
+      login: user
+      password: 123456

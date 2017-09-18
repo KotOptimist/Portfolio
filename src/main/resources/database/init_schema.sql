@@ -262,7 +262,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users VALUES
-  (1, 1, 1, 'Login', 'Password', 'Kyiv', 'ADMIN', 'yuriisalimov', 1);
+  (1, 1, 1, 'DefaultSuccess', 'Password', 'Kyiv', 'ADMIN', 'yuriisalimov', 1);
 
 
 DROP TABLE IF EXISTS users_courses;

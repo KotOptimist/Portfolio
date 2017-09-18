@@ -1,4 +1,4 @@
-package ru.zolotarev.portfolio.model;
+package ru.zolotarev.portfolio.repository.model;
 
 import lombok.Data;
 import ru.zolotarev.portfolio.enums.LanguageLevel;

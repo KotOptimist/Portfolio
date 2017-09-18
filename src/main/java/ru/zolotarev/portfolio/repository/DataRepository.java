@@ -1,7 +1,7 @@
 package ru.zolotarev.portfolio.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.zolotarev.portfolio.model.Model;
+import ru.zolotarev.portfolio.repository.model.Model;
 
 /**
  * The interface provides a set of standard JPA methods

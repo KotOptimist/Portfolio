@@ -1,7 +1,7 @@
 package ru.zolotarev.portfolio.repository;
 
 
-import ru.zolotarev.portfolio.model.Company;
+import ru.zolotarev.portfolio.repository.model.Company;
 
 public interface CompanyRepository extends DataRepository<Company> {
 

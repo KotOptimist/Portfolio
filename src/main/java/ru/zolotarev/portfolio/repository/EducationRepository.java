@@ -1,6 +1,6 @@
 package ru.zolotarev.portfolio.repository;
 
-import ru.zolotarev.portfolio.model.Education;
+import ru.zolotarev.portfolio.repository.model.Education;
 
 public interface EducationRepository extends DataRepository<Education> {
 

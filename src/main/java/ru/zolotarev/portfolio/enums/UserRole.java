@@ -13,10 +13,5 @@ public enum UserRole {
 	/**
 	 * The role of authorized user.
 	 */
-	USER,
-
-	/**
-	 * The role of unauthorized user.
-	 */
-	ANONYMOUS;
+	USER;
 }
