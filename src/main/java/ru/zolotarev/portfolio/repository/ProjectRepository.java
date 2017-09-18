@@ -1,13 +1,10 @@
 package ru.zolotarev.portfolio.repository;
 
-import com.salimov.yurii.entity.Project;
 
 /**
  * The interface provides a set of JPA methods for working
  * {@link Project} objects with a database.
  *
- * @author Yurii Salimov (yuriy.alex.salimov@gmail.com)
- * @version 1.0
  * @see DataRepository
  * @see Project
  */
