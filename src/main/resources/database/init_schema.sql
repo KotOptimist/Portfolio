@@ -11,11 +11,11 @@ CREATE TABLE companies (
 );
 
 INSERT INTO companies VALUES
-  (1, 22, 'Ecoteh', 'http://ecoteh.com.ua', 1),
-  (2, 23, 'Go-It', 'https://goit.ua', 2),
-  (3, 24, 'Prog.kiev.ua', 'https://prog.kiev.ua', 3),
-  (4, 26, 'Taras Shevchenko National University of Kyiv', 'http://www.univ.kiev.ua/en/', 4),
-  (5, 29, 'Sololearn', 'https://www.sololearn.com', 5);
+  (DEFAULT, 22, 'Ecoteh', 'http://ecoteh.com.ua', 1),
+  (DEFAULT, 23, 'Go-It', 'https://goit.ua', 2),
+  (DEFAULT, 24, 'Prog.kiev.ua', 'https://prog.kiev.ua', 3),
+  (DEFAULT, 26, 'Taras Shevchenko National University of Kyiv', 'http://www.univ.kiev.ua/en/', 4),
+  (DEFAULT, 29, 'Sololearn', 'https://www.sololearn.com', 5);
 
 
 DROP TABLE IF EXISTS contacts;
@@ -24,20 +24,16 @@ CREATE TABLE contacts (
   phone     VARCHAR(100) NOT NULL DEFAULT '',
   email     VARCHAR(100) NOT NULL DEFAULT '',
   vkontakte VARCHAR(200) NOT NULL DEFAULT '',
-  facebook  VARCHAR(200) NOT NULL DEFAULT '',
-  twitter   VARCHAR(200) NOT NULL DEFAULT '',
   linkedin  VARCHAR(200) NOT NULL DEFAULT '',
   github    VARCHAR(200) NOT NULL DEFAULT '',
   skype     VARCHAR(100) NOT NULL DEFAULT '',
-  index     INTEGER      NOT NULL DEFAULT 0,
   PRIMARY KEY (id)
 );
 
 INSERT INTO contacts VALUES
-  (1, '+38 (063) 160-01-18', 'yuriy.alex.salimov@gmail.com', 'https://vk.com/yurii.salimov',
-   'https://www.facebook.com/yurii.alex.salimov', '',
+  (DEFAULT, '+38 (063) 160-01-18', 'yuriy.alex.salimov@gmail.com', 'https://vk.com/yurii.salimov',
    'https://ua.linkedin.com/in/yurii-salimov', 'https://github.com/YuriiSalimov',
-   'yurii.salimov', 1);
+   'yurii.salimov');
 
 
 DROP TABLE IF EXISTS educations;

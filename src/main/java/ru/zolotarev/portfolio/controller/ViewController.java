@@ -5,9 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
+import ru.zolotarev.portfolio.enums.FileType;
 
 @Controller
-public class MainPageController {
+public class ViewController {
 
 	private final UserService userService;
 	private final ProjectService projectService;
@@ -15,14 +16,14 @@ public class MainPageController {
 
 	@Autowired
 	@SuppressWarnings("SpringJavaAutowiringInspection")
-	public MainPageController(final UserService userService, final ProjectService projectService, final FileService fileService) {
+	public ViewController(final UserService userService, final ProjectService projectService, final FileService fileService) {
 		this.userService = userService;
 		this.projectService = projectService;
 		this.fileService = fileService;
 	}
 
 	@GetMapping(value = {"", "/", "/index", "/home"})
-	public ModelAndView getHomePage(final ModelAndView modelAndView) {
+	public ModelAndView mainPageView(final ModelAndView modelAndView) {
 		final User user = this.userService.getMainUserByEager();
 		modelAndView.addObject("user", user);
 		modelAndView.addObject("experiences", user.getExperiences());
@@ -45,8 +46,12 @@ public class MainPageController {
 		return modelAndView;
 	}
 
-	@GetMapping(value = "/illegal_access")
-	public void getIllegalAccessException() throws IllegalAccessException {
-		throw new IllegalAccessException("You do not have sufficient permissions to access this page.");
+	@GetMapping("/admin")
+	public ModelAndView adminPageView(final ModelAndView modelAndView){
+
+	}
+
+	public ModelAndView loginPageView(final ModelAndView modelAndView) {
+
 	}
 }
