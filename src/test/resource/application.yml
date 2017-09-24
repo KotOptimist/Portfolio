@@ -14,15 +14,6 @@ database:
     password: postgres
     # The driver for connection to the database.
     driver-class-name: org.postgresql.Driver
-
-    connection-properties: useSSL=false;
-    useUnicode=true;
-    characterEncoding=UTF-8;
-    useJDBCCompliantTimezoneShift=true;
-    useJDBCCompliantTimezoneShift=true;
-    useLegacyDatetimeCode=false;
-    serverTimezone=GMT
-
     # The initial size of the connection pool.
     initial-size: 10
     # The maximum number of active connections that
@@ -34,17 +25,29 @@ database:
     # The SQL query that will be used to validate connections
     #from this pool before returning them to the caller.
     validation-query: SELECT 1
+    # It is use SSL.
+    use-ssl: false
+    # It is use Unicode.
+    use-unicode: true
+    # The character encoding.
+    character-encoding: UTF-8
+    # It is use JDBC compliant timezone shift.
+    use-jdbc-compliant-timezone-shift: true
+    # It is use legacy datetime code.
+    use-legacy-datetime-code: false
+    # The server timezone value.
+    server-timezone: GMT
 
   hibernate:
     # An Hibernate SQL dialect for database.
-    dialect: org.hibernate.dialect.PostgreSQL94Dialect
+    dialect: org.hibernate.dialect.MySQLDialect
     # It is show sql in the console.
     show-sql: false
     # It is use DDL.
     generate-ddl: true
     # The packages of entity for Entity Manager.
-    packages-to-scan: ru.zolotarev.portfolio.repository.entity
-
+    entity-packages: com.salimov.yurii.entity
+  
 security:
   page:
     admin: /admin/**

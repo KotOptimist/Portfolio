@@ -1,4 +1,4 @@
-package ru.zolotarev.portfolio.enums;
+package ru.zolotarev.portfolio.repository.entity.enums;
 
 /**
  * Level of knowledge of some language
