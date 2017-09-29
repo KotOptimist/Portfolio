@@ -1,11 +1,11 @@
 package ru.zolotarev.portfolio.properties;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 @Getter
-@Component
+@Setter
 @ConfigurationProperties("security")
 public class SecurityProperties {
 
@@ -15,6 +15,7 @@ public class SecurityProperties {
 	private User user;
 
 	@Getter
+	@Setter
 	public static class Page {
 		private String admin;
 		private String login;
@@ -22,12 +23,14 @@ public class SecurityProperties {
 	}
 
 	@Getter
+	@Setter
 	public static class DefaultSuccess {
 		private String page;
 		private boolean alwaysUse;
 	}
 
 	@Getter
+	@Setter
 	public static class User {
 		private String login;
 		private String password;

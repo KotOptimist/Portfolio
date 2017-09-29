@@ -1,106 +1,30 @@
 package ru.zolotarev.portfolio.repository.entity;
 
-import javax.persistence.*;
-import java.util.Objects;
+import lombok.Data;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Data
 @Entity
 @Table(name = "contests", schema = "public", catalog = "portfolio")
 public class ContestEntity {
 
-	private int id;
-	private String name;
-	private String description;
-	private String link;
-	private Integer logo;
-	private Integer files;
-	private int index;
-
 	@Id
 	@Column(name = "id", nullable = false)
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	@Basic
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	@Column(name = "name", nullable = false, length = 50)
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Basic
+	private String name;
 	@Column(name = "description", length = -1)
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	@Basic
+	private String description;
 	@Column(name = "link", length = 50)
-	public String getLink() {
-		return link;
-	}
-
-	public void setLink(String link) {
-		this.link = link;
-	}
-
-	@Basic
-	@Column(name = "logo")
-	public Integer getLogo() {
-		return logo;
-	}
-
-	public void setLogo(Integer logo) {
-		this.logo = logo;
-	}
-
-	@Basic
-	@Column(name = "files")
-	public Integer getFiles() {
-		return files;
-	}
-
-	public void setFiles(Integer files) {
-		this.files = files;
-	}
-
-	@Basic
+	private String link;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "id")
+	private FileEntity logo;
+	@OneToMany(mappedBy = "groupId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<FileEntity> files;
 	@Column(name = "index", nullable = false)
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		ContestEntity that = (ContestEntity) o;
-		return id == that.id &&
-				index == that.index &&
-				Objects.equals(name, that.name) &&
-				Objects.equals(description, that.description) &&
-				Objects.equals(link, that.link) &&
-				Objects.equals(logo, that.logo) &&
-				Objects.equals(files, that.files);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, name, description, link, logo, files, index);
-	}
+	private int index;
 }

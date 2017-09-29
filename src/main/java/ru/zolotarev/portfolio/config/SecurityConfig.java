@@ -1,12 +1,13 @@
 package ru.zolotarev.portfolio.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import ru.zolotarev.portfolio.repository.entity.enums.UserRole;
+import ru.zolotarev.portfolio.enums.UserRole;
 import ru.zolotarev.portfolio.properties.SecurityProperties;
 
 /**
@@ -14,6 +15,7 @@ import ru.zolotarev.portfolio.properties.SecurityProperties;
  */
 @Configuration
 @EnableWebSecurity
+@EnableConfigurationProperties(SecurityProperties.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -64,8 +66,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	protected void configure(final AuthenticationManagerBuilder builder) throws Exception {
-		builder.inMemoryAuthentication().withUser(properties.getUser().getLogin()).password(properties.getUser().getPassword()).roles(UserRole.USER.name())
+		builder.inMemoryAuthentication().withUser(properties.getUser().getLogin()).password(properties.getUser().getPassword()).roles(UserRole.GUESS.name())
 				.and()
-				.withUser(properties.getAdmin().getLogin()).password(properties.getAdmin().getPassword()).roles(UserRole.ADMIN.name(), UserRole.USER.name());
+				.withUser(properties.getAdmin().getLogin()).password(properties.getAdmin().getPassword()).roles(UserRole.ADMIN.name(), UserRole.GUESS.name());
 	}
 }

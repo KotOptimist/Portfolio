@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 
+
 /**
  * Class of basic configurations for the Spring: DataSource, JpaVendorAdapter,
  * JpaTransactionManager, BeanPostProcessor, CommonsMultipartResolver.
@@ -25,7 +26,7 @@ import javax.persistence.EntityManagerFactory;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "ru.zolotarev.portfolio.repository")
+@EnableJpaRepositories("ru.zolotarev.portfolio.repository")
 public class DatabaseConfig {
 
 	/**

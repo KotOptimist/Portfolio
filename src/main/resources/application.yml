@@ -1,8 +1,25 @@
-spring.main.banner-mode: off
+server:
+  port: 8080
+  servlet-path: /
 
-spring.mvc.view:
-  prefix: /views/
-  suffix: .jsp
+spring:
+  main.banner-mode: "off"
+
+mvc:
+  view:
+    # Content Type encoding.
+    content-type: text/html;charset=UTF-8
+    # View name prefix (path relative to the project.directory).
+    prefix: /views/
+    # View name suffix.
+    suffix: .jsp
+    # It is exposed context beans as attributes.
+    expose-context-beans-as-attributes: true
+  resource:
+    # URL of resources (path relative to the view.name-prefix).
+    path-pattern: /resources/**
+    # Location of resources (path relative to the view.name-prefix).
+    resource-location: /resources/
 
 database:
   jdbc:
@@ -15,13 +32,14 @@ database:
     # The driver for connection to the database.
     driver-class-name: org.postgresql.Driver
 
-    connection-properties: useSSL=false;
-    useUnicode=true;
-    characterEncoding=UTF-8;
-    useJDBCCompliantTimezoneShift=true;
-    useJDBCCompliantTimezoneShift=true;
-    useLegacyDatetimeCode=false;
-    serverTimezone=GMT
+    connection-properties: >
+      useSSL=false;
+      useUnicode=true;
+      characterEncoding=UTF-8;
+      useJDBCCompliantTimezoneShift=true;
+      useJDBCCompliantTimezoneShift=true;
+      useLegacyDatetimeCode=false;
+      serverTimezone=GMT
 
     # The initial size of the connection pool.
     initial-size: 10
@@ -53,10 +71,9 @@ security:
   default-success:
     page: /admin/
     always-use: false
+  admin:
+    login: admin
+    password: 123
   user:
-    admin:
-      login: admin
-      password: 123
-    user:
-      login: user
-      password: 123456
+    login: user
+    password: 123456

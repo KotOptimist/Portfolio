@@ -1,4 +1,4 @@
-package ru.zolotarev.portfolio.repository.entity.enums;
+package ru.zolotarev.portfolio.enums;
 
 /**
  * Types of all files for this project

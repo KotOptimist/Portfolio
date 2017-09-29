@@ -7,8 +7,7 @@ CREATE TABLE files (
   name     VARCHAR(20),
   path     VARCHAR(50) NOT NULL UNIQUE,
   type     FILE_TYPE   NOT NULL DEFAULT 'OTHER',
-  group_id INTEGER UNIQUE,
-  index    INTEGER     NOT NULL DEFAULT 0,
+  group_id INTEGER,
   PRIMARY KEY (id)
 );
 
@@ -28,8 +27,7 @@ CREATE TABLE information (
   photo        INTEGER,
   files        INTEGER,
   PRIMARY KEY (id),
-  FOREIGN KEY (photo) REFERENCES files (id),
-  FOREIGN KEY (files) REFERENCES files (group_id)
+  FOREIGN KEY (photo) REFERENCES files (id)
 );
 
 DROP TYPE IF EXISTS PROJECT_STATUS;
@@ -48,8 +46,7 @@ CREATE TABLE projects (
   files       INTEGER,
   index       INTEGER        NOT NULL DEFAULT 0,
   PRIMARY KEY (id),
-  FOREIGN KEY (logo) REFERENCES files (id),
-  FOREIGN KEY (files) REFERENCES files (group_id)
+  FOREIGN KEY (logo) REFERENCES files (id)
 );
 
 DROP TYPE IF EXISTS EDUCATION_STATUS;
@@ -67,8 +64,7 @@ CREATE TABLE education (
   files       INTEGER,
   index       INTEGER          NOT NULL DEFAULT 0,
   PRIMARY KEY (id),
-  FOREIGN KEY (logo) REFERENCES files (id),
-  FOREIGN KEY (files) REFERENCES files (group_id)
+  FOREIGN KEY (logo) REFERENCES files (id)
 );
 
 DROP TYPE IF EXISTS WORK_STATUS;
@@ -88,8 +84,7 @@ CREATE TABLE work (
   files       INTEGER,
   index       INTEGER     NOT NULL DEFAULT 0,
   PRIMARY KEY (id),
-  FOREIGN KEY (logo) REFERENCES files (id),
-  FOREIGN KEY (files) REFERENCES files (group_id)
+  FOREIGN KEY (logo) REFERENCES files (id)
 );
 
 DROP TYPE IF EXISTS LANGUAGE_LEVEL;
@@ -123,8 +118,7 @@ CREATE TABLE contests (
   files       INTEGER,
   index       INTEGER     NOT NULL DEFAULT 0,
   PRIMARY KEY (id),
-  FOREIGN KEY (logo) REFERENCES files (id),
-  FOREIGN KEY (files) REFERENCES files (group_id)
+  FOREIGN KEY (logo) REFERENCES files (id)
 );
 
 DROP TYPE IF EXISTS SCIENTIFIC_WORK_STATUS;
@@ -139,6 +133,5 @@ CREATE TABLE scientific_works (
   status      SCIENTIFIC_WORK_STATUS NOT NULL DEFAULT 'COMPLETED',
   files       INTEGER,
   index       INTEGER                NOT NULL DEFAULT 0,
-  PRIMARY KEY (id),
-  FOREIGN KEY (files) REFERENCES files (group_id)
+  PRIMARY KEY (id)
 );
