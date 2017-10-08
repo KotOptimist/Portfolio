@@ -58,6 +58,6 @@ public class MainPageController {
 	@ExceptionHandler(Exception.class)
 	public String exceptionHandler(Exception ex) {
 		log.warn("Main page exception. Reason[{}]: {}", ex.getClass(), ex.getMessage());
-		return "redirect:error";
+		return "redirect:error?class=" + ex.getClass() + "&message=" + ex.getMessage();
 	}
 }

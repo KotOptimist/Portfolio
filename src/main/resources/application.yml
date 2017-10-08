@@ -2,8 +2,12 @@ server:
   port: 8080
   servlet-path: /
 
-spring:
-  main.banner-mode: "off"
+# Set the file size limit (default 1Mb). If you want to specify that files be
+# unlimited set the multipart.maxFileSize property to -1.
+multipart.maxFileSize: 3Mb
+
+# Set the total request size for a multipart/form-data (default 10Mb)
+multipart.maxRequestSize: 20Mb
 
 mvc:
   view:
@@ -70,7 +74,7 @@ security:
     access-deny: /access_deny
   default-success:
     page: /admin/
-    always-use: false
+    always-use: true
   admin:
     login: admin
     password: 123

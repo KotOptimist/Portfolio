@@ -7,7 +7,7 @@ import ru.zolotarev.portfolio.repository.entity.EducationEntity;
 
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR, componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR, componentModel = "spring", uses = FileConverter.class)
 public interface EducationConverter {
 
 	EducationDto convert(EducationEntity educationEntity);

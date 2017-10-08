@@ -34,9 +34,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-lg-offset-3">
-                        <h4>Hello, my name is</h4>
-                        <h1>${information.firstName}</h1>
-                        <h4>${information.secondName}</h4>
+                        <h4>Hello, my name is nigga</h4>
+                        <h1>${information[0].firstName}</h1>
+                        <h4>${information[0].secondName}</h4>
                     </div>
                 </div>
             </div>

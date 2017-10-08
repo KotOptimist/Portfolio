@@ -7,7 +7,7 @@ import ru.zolotarev.portfolio.repository.entity.SkillEntity;
 
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR, componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR, componentModel = "spring", uses = FileConverter.class)
 public interface SkillConverter {
 
 	SkillDto convert(SkillEntity skillEntity);

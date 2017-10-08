@@ -5,8 +5,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import ru.zolotarev.portfolio.enums.UserRole;
 import ru.zolotarev.portfolio.properties.SecurityProperties;
 
@@ -34,26 +36,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(final HttpSecurity httpSecurity) throws Exception {
 		httpSecurity
-				.logout()
-				.invalidateHttpSession(false)
-				.and()
-				.authorizeRequests()
-				.antMatchers(properties.getPage().getAdmin())
-				.hasRole(UserRole.ADMIN.name())
+				.authorizeRequests().antMatchers(properties.getPage().getAdmin()).hasRole(UserRole.ADMIN.name())
 				.anyRequest().permitAll()
 				.and()
-				.formLogin()
-				.loginPage(properties.getPage().getLogin())
-				.usernameParameter(properties.getAdmin().getLogin())
-				.passwordParameter(properties.getAdmin().getPassword())
-				.defaultSuccessUrl(
-						properties.getDefaultSuccess().getPage(),
-						properties.getDefaultSuccess().isAlwaysUse()
-				)
-				.and().exceptionHandling()
-				.accessDeniedPage(properties.getPage().getAccessDeny())
+				.formLogin().defaultSuccessUrl("/admin")
+				.loginPage("/login")
+				.usernameParameter("login").passwordParameter("password")
 				.and()
-				.csrf().disable();
+				.exceptionHandling().accessDeniedPage(properties.getPage().getAccessDeny())
+				.and()
+				.logout().permitAll().logoutSuccessUrl("/index").invalidateHttpSession(false)
+				.and()
+				.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login"));
 	}
 
 	/**
@@ -70,4 +64,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.withUser(properties.getAdmin().getLogin()).password(properties.getAdmin().getPassword()).roles(UserRole.ADMIN.name(), UserRole.GUESS.name());
 	}
+
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/*.css");
+		web.ignoring().antMatchers("/*.js");
+	}
+
 }

@@ -1,7 +1,6 @@
 package ru.zolotarev.portfolio.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
@@ -44,15 +43,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	 * @param registry The object of the ResourceHandlerRegistry class.
 	 */
 	@Override
-	@ConfigurationProperties("mvc.resource")
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler(webProperties.getResource().getPathPattern())
 				.addResourceLocations(webProperties.getResource().getResourceLocation());
 	}
 
 	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addViewController("/admin").setViewName("admin");
+		registry.addViewController("/login").setViewName("login");
 	}
-
 }

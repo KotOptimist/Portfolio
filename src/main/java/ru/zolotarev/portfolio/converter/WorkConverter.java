@@ -7,7 +7,7 @@ import ru.zolotarev.portfolio.repository.entity.WorkEntity;
 
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR, componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.ERROR, componentModel = "spring", uses = FileConverter.class)
 public interface WorkConverter {
 
 	WorkDto convert(WorkEntity workEntity);
